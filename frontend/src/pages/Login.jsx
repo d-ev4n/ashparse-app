@@ -11,7 +11,7 @@ export default function Login() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState(location.state?.username || '')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -189,13 +189,24 @@ export default function Login() {
                 </p>
               )}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full rounded-lg bg-accent px-4 py-3 text-sm font-medium text-background transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {loading ? 'Signing in...' : 'Sign in'}
-              </button>
+              {/* Login buttons */}
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm font-medium transition hover:bg-muted disabled:opacity-50"
+                >
+                  Login
+                </button>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full rounded-lg bg-accent px-4 py-3 text-sm font-medium text-background transition hover:opacity-80 disabled:opacity-50"
+                >
+                  {loading ? 'Signing in...' : 'Sign In'}
+                </button>
+              </div>
             </form>
 
             <div className="my-7 border-t border-border" />

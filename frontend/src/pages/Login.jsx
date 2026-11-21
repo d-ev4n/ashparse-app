@@ -64,7 +64,10 @@ export default function Login() {
 
   return (
     <main className="relative min-h-screen bg-background text-foreground">
+
+      {/* Theme toggle */}
       <button
+        type="button"
         onClick={toggleTheme}
         className="absolute right-6 top-6 z-10 rounded-lg border border-border p-2 text-muted-foreground transition hover:bg-muted"
         aria-label="Toggle theme"
@@ -76,6 +79,7 @@ export default function Login() {
 
         {/* Ashparse introduction */}
         <section className="mx-auto w-full max-w-xl">
+
           <div className="mb-10">
             <h1 className="text-4xl font-bold tracking-tight">
               Ashparse<span className="text-muted-foreground">.</span>
@@ -117,6 +121,7 @@ export default function Login() {
                     <h3 className="text-sm font-semibold">
                       {feature.title}
                     </h3>
+
                     <p className="mt-1 text-xs leading-5 text-muted-foreground">
                       {feature.description}
                     </p>
@@ -134,6 +139,7 @@ export default function Login() {
         {/* Login form */}
         <section className="mx-auto w-full max-w-md">
           <div className="rounded-2xl border border-border bg-surface p-7 shadow-sm sm:p-9">
+
             <div className="mb-8">
               <h2 className="text-2xl font-semibold tracking-tight">
                 Welcome back
@@ -144,6 +150,7 @@ export default function Login() {
               </p>
             </div>
 
+            {/* Registration success message */}
             {location.state?.message && (
               <p className="mb-5 rounded-lg border border-border bg-background p-3 text-sm text-foreground">
                 {location.state.message}
@@ -151,6 +158,8 @@ export default function Login() {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-5">
+
+              {/* Username */}
               <div>
                 <label className="mb-2 block text-sm font-medium">
                   Username
@@ -167,6 +176,7 @@ export default function Login() {
                 />
               </div>
 
+              {/* Password */}
               <div>
                 <label className="mb-2 block text-sm font-medium">
                   Password
@@ -183,30 +193,22 @@ export default function Login() {
                 />
               </div>
 
+              {/* Error message */}
               {error && (
                 <p className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-500">
                   {error}
                 </p>
               )}
 
-              {/* Login buttons */}
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm font-medium transition hover:bg-muted disabled:opacity-50"
-                >
-                  Login
-                </button>
+              {/* Single Login button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-lg border-2 border-neutral-700 bg-neutral-700 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-600 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {loading ? 'Logging in...' : 'Login'}
+              </button>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full rounded-lg bg-accent px-4 py-3 text-sm font-medium text-background transition hover:opacity-80 disabled:opacity-50"
-                >
-                  {loading ? 'Signing in...' : 'Sign In'}
-                </button>
-              </div>
             </form>
 
             <div className="my-7 border-t border-border" />
@@ -220,6 +222,7 @@ export default function Login() {
                 Create account
               </Link>
             </p>
+
           </div>
         </section>
 
